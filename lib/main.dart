@@ -24,6 +24,8 @@ class DicePage extends StatefulWidget {
 
 class _DicePageState extends State<DicePage> {
   var liftdice = 1;
+  var rdice = 1;
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -34,9 +36,7 @@ class _DicePageState extends State<DicePage> {
               padding: const EdgeInsets.all(8.0),
               child: FlatButton(
                 onPressed: () {
-                  setState(() {
-                    liftdice = Random().nextInt(6) + 1;
-                  });
+                  dichk();
                 },
                 child: Image.asset('images/dice$liftdice.png'),
               ),
@@ -47,16 +47,22 @@ class _DicePageState extends State<DicePage> {
               padding: const EdgeInsets.all(8.0),
               child: FlatButton(
                 onPressed: () {
-                  liftdice = 1;
-                  setState(() {});
+                  dichk();
                 },
-                child: Image.asset('images/dice1.png'),
+                child: Image.asset('images/dice$rdice.png'),
               ),
             ),
           ),
         ],
       ),
     );
+  }
+
+  void dichk() {
+    setState(() {
+      liftdice = Random().nextInt(6) + 1;
+      rdice = Random().nextInt(6) + 1;
+    });
   }
 }
 
